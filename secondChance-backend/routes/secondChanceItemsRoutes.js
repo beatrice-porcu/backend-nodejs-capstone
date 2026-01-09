@@ -72,7 +72,7 @@ router.get('/:id', async (req, res, next) => {
         //Step 4: task 2 - insert code here
         const collection = db.collection('secondChanceItems');
         //Step 4: task 3 - insert code here
-        const item = await collection.find({'id': req.params.id})
+        const item = await collection.findOne({id: req.params.id})
         //Step 4: task 4 - insert code here
         if(!item) return res.status(404).json('Item not found');
         res.status(200).json(item);
