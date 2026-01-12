@@ -31,7 +31,7 @@ const secondChanceItemsRoutes = require('./routes/secondChanceItemsRoutes');
 app.use('/api/secondchance/items', secondChanceItemsRoutes);
 // Search API Task 1: import the searchRoutes and store in a constant called searchRoutes
 const secondChanceSearchRoutes = require('./routes/searchRoutes');
-app.use('api/secondchance/search', secondChanceSearchRoutes);
+app.use('/api/secondchance/search', secondChanceSearchRoutes);
 
 const pinoHttp = require('pino-http');
 const logger = require('./logger');
