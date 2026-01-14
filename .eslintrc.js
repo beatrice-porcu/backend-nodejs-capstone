@@ -22,5 +22,8 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
+    'no-unused-vars': ['error', {
+      'varsIgnorePattern': ['path', 'fs']
+    }]
   }
 }
