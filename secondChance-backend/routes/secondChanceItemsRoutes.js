@@ -1,4 +1,4 @@
-/**eslint no-unused-vars */
+/**eslint-disable no-unused-vars */
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
@@ -60,7 +60,7 @@ router.post('/',
         //Step 3: Task 6 insert code here
         const itemAdded = await collection.insertOne(newSecondChanceItem)
         if (itemAdded) {
-            res.status(201).json(secondChanceItem.ops[0])
+            res.status(201).json(newSecondChanceItem.ops[0])
         }
     } catch (e) {
         next(e)
