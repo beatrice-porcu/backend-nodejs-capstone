@@ -119,15 +119,17 @@ router.put('/update', async (req, res) => {
             { $set: existingUser },
             { returnDocument: 'after' }
         )
-
-
+        // Task 7: Create JWT authentication with `user._id` as a payload using the secret key from the .env file
         const payload = {
             user: {
-                id: existingUser._id,
+                id: updatedUser._id,
             },
         }
-
-        res.json({ authtoken, userName, userEmail })        // Task 7: Create JWT authentication with `user._id` as a payload using the secret key from the .env file
+        const authtoken = jwt.sign(payload, JWT_SECRET)
+        const userName = updatedUser.firstName
+        const userEmail = updatedUser.email
+        // Task 8: Return the token, user name and user email as JSON response
+        res.json({ authtoken, userName, userEmail })
         res.json({ authtoken })
     } catch (e) {
         return res.status(500).send('Internal server error')
