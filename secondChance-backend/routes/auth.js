@@ -8,7 +8,7 @@ const pino = require('pino')
 dotenv.config()
 const logger = pino()
 const JWT_SECRET = process.env.JWT_SECRET
-const { body, validationResult } = require('express-validator')
+const validationResult = require('express-validator')
 
 router.post('/register', async (req, res) => {
     try {
