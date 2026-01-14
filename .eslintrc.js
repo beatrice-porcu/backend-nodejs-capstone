@@ -23,7 +23,7 @@ module.exports = {
   },
   rules: {
     'no-unused-vars': ['error', {
-      'varsIgnorePattern': 'path|fs'
+      'varsIgnorePattern': 'path|fs|axios'
     }]
   }
 }
