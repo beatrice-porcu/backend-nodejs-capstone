@@ -1,3 +1,4 @@
+/**eslint no-unused-vars */
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
@@ -57,8 +58,10 @@ router.post('/',
         //Step 3: task 5 - insert code here
         newSecondChanceItem.date_added = Math.floor(new Date().getTime() / 1000)
         //Step 3: Task 6 insert code here
-        itemAdded = await collection.insertOne(newSecondChanceItem)
-        res.status(201).json(secondChanceItem.ops[0])
+        const itemAdded = await collection.insertOne(newSecondChanceItem)
+        if (itemAdded) {
+            res.status(201).json(secondChanceItem.ops[0])
+        }
     } catch (e) {
         next(e)
     }
@@ -98,8 +101,9 @@ router.put('/:id', async(req, res,next) => {
         item.description = req.body.description
         item.age_years = Number((item.age_days / 365).toFixed(1))
         item.updatedAt = new Date()
+        let id = item.id
         const updatedItem = await collection.findOneAndUpdate(
-            { id },
+            { id: id },
             { $set: item },
             { returnDocument: 'after' }
         )
